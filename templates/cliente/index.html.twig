@@ -1,0 +1,60 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Clientes
+{% endblock %}
+
+
+
+{% block body %}
+	<div class="container">
+
+
+		
+
+		<div class="my-3 d-flex gap-3">
+			<div >
+				<a href="/clientes/new" type="button" class="text-nowrap btn btn-outline-secondary">
+			<i class="fa-solid fa-person-circle-plus me-2"></i>Crear Cliente
+		</a>
+			</div>
+			<div class="input-group ">
+				<input type="text" class="form-control" id="input-search-cliente" placeholder="Buscar Cliente por nombre ...">
+			</div>
+
+		</div>
+
+		<table class="table" id="table-clientes">
+			<thead>
+				<tr>
+					<th scope="col">#</th>
+					<th scope="col">Nombre</th>
+					<th scope="col">Telefono</th>
+					<th scope="col">Documento</th>
+					<th scope="col">Fecha</th>
+					<th scope="col">#</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for cliente in clientes %}
+
+					<tr>
+						<th scope="row">{{ cliente.id }}</th>
+						<td>{{ cliente.name }}</td>
+						<td>{{ cliente.phone }}</td>
+						<td>{{ cliente.typeDocument }}
+							-
+							{{ cliente.numberDocument }}</td>
+						<td>{{ cliente.dateCreated|date('Y-m-d') }}</td>
+						<td>
+							<a href="{{ path('app_cliente_edit_page', {id: cliente.id}) }}" type="button" class="btn btn-primary btn-sm">
+								<i class="fa-regular fa-pen-to-square"></i>
+							</a>
+
+						</td>
+					</tr>
+
+				{% endfor %}
+			</tbody>
+		</table>
+	</div>
+{% endblock %}

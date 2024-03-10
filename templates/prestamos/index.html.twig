@@ -1,0 +1,65 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Prestamos
+{% endblock %}
+
+{% block body %}
+
+
+	<div class="container">
+
+
+		<div class="my-3 d-flex gap-3">
+			<div >
+				<a href="{{ path('app_prestamos_new') }}" type="button" class="text-nowrap btn btn-outline-secondary">
+					<i class="fa-solid fa-person-circle-plus me-2"></i> 
+                    <span class="">
+                    Crear Prestamo
+                    </span>
+				</a>
+			</div>
+			<div class="input-group ">
+				<input type="text" class="form-control" id="input-search-prestamo" placeholder="Buscar Cliente por nombre ...">
+			</div>
+
+		</div>
+
+
+		<div class="table-responsive">
+
+			<table class="table table-secondary table-striped" id="table-clientes ">
+				<thead>
+					<tr>
+						<th scope="col">#</th>
+						<th scope="col">Cliente</th>
+						<th scope="col">Valor</th>
+						<th scope="col">Estado</th>
+						<th scope="col">Fecha</th>
+						<th scope="col">#</th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for prestamo in prestamos %}
+
+						<tr>
+							<th scope="row">{{ prestamo.id }}</th>
+							<td>{{ prestamo.cliente.name }}</td>
+							<td>{{ prestamo.valorTotal }}</td>
+							<td>{{ prestamo.estado }}</td>
+							<td>{{ prestamo.fechaPrestamo|date('Y-m-d') }}</td>
+							<td>
+								{# <a href="{{ path('app_prestamo_edit', {id: prestamo.id}) }}" type="button" class="btn btn-primary btn-sm">
+																																<i class="fa-regular fa-pen-to-square"></i>
+																															</a> #}
+
+							</td>
+						</tr>
+
+					{% endfor %}
+				</tbody>
+			</table>
+		</div>
+
+	</div>
+
+{% endblock %}
