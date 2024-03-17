@@ -2,7 +2,9 @@
 
 namespace App\Controller;
 
+use App\Entity\Pagos;
 use App\Entity\Prestamos;
+use App\Form\PagosType;
 use App\Form\PrestamoFormType;
 use App\Repository\PrestamosRepository;
 use Doctrine\ORM\EntityManager;
@@ -52,6 +54,22 @@ class PrestamosController extends AbstractController
             return $this->redirectToRoute('app_prestamos_list');
         }
         return $this->render('prestamos/new.html.twig', [
+            'form' => $form,
+        ]);
+    }
+
+    #[Route('/prestamos/show/{id}', name: 'app_prestamos_show')]
+    public function show(int $id, EntityManagerInterface $em): Response
+    {
+
+
+        $prestamo = $em->getRepository(Prestamos::class)->find($id);
+        $pagos = new Pagos();
+        $form = $this->createForm(PagosType::class, $pagos);
+
+
+        return $this->render('prestamos/show.html.twig', [
+            'prestamo' => $prestamo,
             'form' => $form,
         ]);
     }

@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\PrestamosRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -37,6 +39,14 @@ class Prestamos
 
     #[ORM\ManyToOne(inversedBy: 'prestamos')]
     private ?Cliente $cliente = null;
+
+    #[ORM\OneToMany(targetEntity: Pagos::class, mappedBy: 'prestamo')]
+    private Collection $pagos;
+
+    public function __construct()
+    {
+        $this->pagos = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -135,6 +145,36 @@ class Prestamos
     public function setCliente(?Cliente $cliente): static
     {
         $this->cliente = $cliente;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Pagos>
+     */
+    public function getPagos(): Collection
+    {
+        return $this->pagos;
+    }
+
+    public function addPago(Pagos $pago): static
+    {
+        if (!$this->pagos->contains($pago)) {
+            $this->pagos->add($pago);
+            $pago->setPrestamo($this);
+        }
+
+        return $this;
+    }
+
+    public function removePago(Pagos $pago): static
+    {
+        if ($this->pagos->removeElement($pago)) {
+            // set the owning side to null (unless already changed)
+            if ($pago->getPrestamo() === $this) {
+                $pago->setPrestamo(null);
+            }
+        }
 
         return $this;
     }

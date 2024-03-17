@@ -10,12 +10,12 @@
 
 
 		<div class="my-3 d-flex gap-3">
-			<div >
+			<div>
 				<a href="{{ path('app_prestamos_new') }}" type="button" class="text-nowrap btn btn-outline-secondary">
-					<i class="fa-solid fa-person-circle-plus me-2"></i> 
-                    <span class="">
-                    Crear Prestamo
-                    </span>
+					<i class="fa-solid fa-person-circle-plus me-2"></i>
+					<span class="">
+						Crear Prestamo
+					</span>
 				</a>
 			</div>
 			<div class="input-group ">
@@ -48,9 +48,10 @@
 							<td>{{ prestamo.estado }}</td>
 							<td>{{ prestamo.fechaPrestamo|date('Y-m-d') }}</td>
 							<td>
-								{# <a href="{{ path('app_prestamo_edit', {id: prestamo.id}) }}" type="button" class="btn btn-primary btn-sm">
-																																<i class="fa-regular fa-pen-to-square"></i>
-																															</a> #}
+								<a href="{{ path('app_prestamos_show', {id: prestamo.id}) }}" type="button" class="btn btn-primary btn-sm">
+									<i class="fa-regular fa-eye"></i>
+
+								</a>
 
 							</td>
 						</tr>
