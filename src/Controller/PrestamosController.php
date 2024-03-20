@@ -46,7 +46,7 @@ class PrestamosController extends AbstractController
             $prestamo->setPorcentajeInteres(10);
             $prestamo->setValorInteres($prestamo->getValorTotal() * 0.10);
             $prestamo->setEstado("PENDIENTE");
-            $prestamo->setDeudaActual($prestamo->getValorTotal());
+            $prestamo->setDeudaActual($prestamo->getValorTotal() + ($prestamo->getValorTotal() * 0.10));
             $em->persist($prestamo);
             $em->flush();
             // ... perform some action, such as saving the task to the database
@@ -59,14 +59,32 @@ class PrestamosController extends AbstractController
     }
 
     #[Route('/prestamos/show/{id}', name: 'app_prestamos_show')]
-    public function show(int $id, EntityManagerInterface $em): Response
+    public function show(int $id, Request $request, EntityManagerInterface $em): Response
     {
 
 
         $prestamo = $em->getRepository(Prestamos::class)->find($id);
         $pagos = new Pagos();
+        $pagos->setPagoInteres($prestamo->getValorInteres());
         $form = $this->createForm(PagosType::class, $pagos);
+        $form->handleRequest($request);
+        if ($form->isSubmitted()) {
+            // $form->getData() holds the submitted values
+            // but, the original `$task` variable has also been updated
+            $pagos = $form->getData();
+            $prestamo->addPago($pagos);
+            $prestamo->setDeudaActual($prestamo->getDeudaActual() - $pagos->getPagoTotal());
+            if ($prestamo->getDeudaActual() == 0) {
+                $prestamo->setEstado("PAGADO");
+            }
 
+            $em->persist($pagos);
+            $em->persist($prestamo);
+
+            $em->flush();
+            // ... perform some action, such as saving the task to the database
+            return $this->redirectToRoute('app_prestamos_show', ["id" => $prestamo->getId()]);
+        }
 
         return $this->render('prestamos/show.html.twig', [
             'prestamo' => $prestamo,

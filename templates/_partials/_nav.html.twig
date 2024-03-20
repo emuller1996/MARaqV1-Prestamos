@@ -25,12 +25,13 @@
               Mi Perfil
             </a>
             <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#">Action</a></li>
-              <li><a class="dropdown-item" href="#">Another action</a></li>
+              <li><span class="dropdown-item">{{ app.user.username }}</span></li>
+              <li><span class="dropdown-item">{{ app.user.roles[0] }}</span></li>
+
               <li>
                 <hr class="dropdown-divider">
               </li>
-              <li><a class="dropdown-item" href="#">Something else here</a></li>
+              <li><a class="dropdown-item" href="{{ path('app_logout') }}">Cerrar Session</a></li>
             </ul>
           </li>
         </ul>

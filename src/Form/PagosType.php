@@ -6,6 +6,7 @@ use App\Entity\Pagos;
 use App\Entity\Prestamos;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -20,11 +21,8 @@ class PagosType extends AbstractType
             ->add('pago_interes')
             ->add('abono_capital')
             ->add('pago_total')
-            ->add('prestamo', EntityType::class, [
-                'class' => Prestamos::class,
-'choice_label' => 'id',
-            ])
-        ;
+
+            ->add('Guardar', SubmitType::class);
     }
 
     public function configureOptions(OptionsResolver $resolver): void

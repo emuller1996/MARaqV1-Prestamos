@@ -15,14 +15,26 @@ class MainController extends AbstractController
 {
 
 
-    #[Route('/', name: 'app_index')]
+    #[Route('/home', name: 'app_index')]
     public function index(EntityManagerInterface $em): Response
     {
 
 
         $total = $em->getRepository(Cliente::class)->findAll();
-       
+
         return $this->render('index.html.twig', [
+            "total_clientes" =>  count($total)
+        ]);
+    }
+
+    #[Route('/', name: 'app_index_main')]
+    public function index_main(EntityManagerInterface $em): Response
+    {
+
+
+        $total = $em->getRepository(Cliente::class)->findAll();
+
+        return $this->render('index.main.html.twig', [
             "total_clientes" =>  count($total)
         ]);
     }

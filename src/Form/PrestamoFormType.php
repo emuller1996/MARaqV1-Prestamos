@@ -15,7 +15,7 @@ class PrestamoFormType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('valorTotal')
+            ->add('valorTotal',null,["attr" => [ "type" => "text"]])
             ->add('fechaPrestamo', null, [
                 'widget' => 'single_text',
             ])
