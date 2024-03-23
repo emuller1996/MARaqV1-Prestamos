@@ -4,22 +4,23 @@
 {% endblock %}
 
 
-
 {% block body %}
 	<div class="container">
 
 
-		
-
-		<div class="my-3 d-flex gap-3">
-			<div >
+		<div class="my-3 row g-3">
+			<div class="col-md-3">
 				<a href="/clientes/new" type="button" class="text-nowrap btn btn-outline-secondary">
-			<i class="fa-solid fa-person-circle-plus me-2"></i>Crear Cliente
-		</a>
+					<i class="fa-solid fa-person-circle-plus me-2"></i>Crear Cliente
+				</a>
 			</div>
-			<div class="input-group ">
-				<input type="text" class="form-control" id="input-search-cliente" placeholder="Buscar Cliente por nombre ...">
+			<div class="col-md-8">
+
+				<div class="input-group ">
+					<input type="text" class="form-control" id="input-search-cliente" placeholder="Buscar Cliente por nombre ...">
+				</div>
 			</div>
+
 
 		</div>
 

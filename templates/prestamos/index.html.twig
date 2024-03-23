@@ -9,8 +9,8 @@
 	<div class="container">
 
 
-		<div class="my-3 d-flex gap-3">
-			<div>
+		<div class="my-3 row g-3">
+			<div class="col-md-3">
 				<a href="{{ path('app_prestamos_new') }}" type="button" class="text-nowrap btn btn-outline-secondary">
 					<i class="fa-solid fa-person-circle-plus me-2"></i>
 					<span class="">
@@ -18,11 +18,15 @@
 					</span>
 				</a>
 			</div>
-			<div class="input-group ">
-				<input type="text" class="form-control" id="input-search-prestamo" placeholder="Buscar Cliente por nombre ...">
+			<div class="col-md-6">
+				<div class="input-group ">
+					<input type="text" class="form-control" id="input-search-prestamo" placeholder="Buscar Cliente por nombre ...">
+
+				</div>
 
 			</div>
-			<div class="col-2">
+
+			<div class="col-md-3">
 
 				<select class="form-select" id="filter-status-prestamo" aria-label="Default select example">
 					<option selected>TODOS</option>
