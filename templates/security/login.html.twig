@@ -46,7 +46,7 @@
 						<div class="auth-box card">
 							<div class="card-block">
 
-								<form method="post">
+								<form method="post" action="{{ path('app_login_check') }}">
 									{% if error %}
 										<div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
 									{% endif %}

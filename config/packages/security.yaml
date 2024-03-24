@@ -22,7 +22,7 @@ security:
             pattern: ^/clientes
             form_login:
                 login_path: app_login
-                check_path: app_login
+                check_path: app_login_check
                 enable_csrf: true
                 default_target_path: /home
                 provider: app_user_provider
