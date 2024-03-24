@@ -55,7 +55,6 @@ security:
     access_control:
         # - { path: ^/admin, roles: ROLE_ADMIN }
         # - { path: ^/profile, roles: ROLE_USER }
-        - { path: '^/clientes', roles: ['ROLE_ADMIN' , 'IS_AUTHENTICATED_FULLY'] }
         - { path: '^/prestamos', roles: IS_AUTHENTICATED_FULLY }
         - { path: '/home', roles: IS_AUTHENTICATED_FULLY }
         - { path: '/client/dashboard', roles: ROLE_CLIENTE }
