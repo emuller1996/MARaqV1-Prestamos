@@ -19,7 +19,7 @@ security:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
         usuario:
-            pattern: ^/clientes
+            pattern: ^/
             form_login:
                 login_path: app_login
                 check_path: app_login_check
