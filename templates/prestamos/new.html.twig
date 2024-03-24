@@ -13,4 +13,14 @@
 
 	{% endblock %}
 
-	
+	{% block javascripts %}
+		{{ parent() }}
+		 <script src="{{ asset('js/prestamos.index.js') }}"></script>
+		 <script>
+		$(document).ready(function() {
+
+		    $('#prestamo_form_cliente').select2();
+		});
+		</script>
+
+	{% endblock %}

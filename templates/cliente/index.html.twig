@@ -5,6 +5,19 @@
 
 
 {% block body %}
+
+<div class="page-header">
+		<div class="page-block">
+			<div class="row align-items-center">
+				<div class="col-md-8">
+					<div class="page-header-title">
+						<h5 class="m-b-10"><i class="fa-solid fa-file-invoice-dollar me-2"></i>Clientes</h5>
+						<p class="m-b-0">Gestion de Clientes</p>
+					</div>
+				</div>				
+			</div>
+		</div>
+	</div>
 	<div class="container">
 
 
@@ -23,39 +36,42 @@
 
 
 		</div>
+		<div class="table-responsive">
 
-		<table class="table" id="table-clientes">
-			<thead>
-				<tr>
-					<th scope="col">#</th>
-					<th scope="col">Nombre</th>
-					<th scope="col">Telefono</th>
-					<th scope="col">Documento</th>
-					<th scope="col">Fecha</th>
-					<th scope="col">#</th>
-				</tr>
-			</thead>
-			<tbody>
-				{% for cliente in clientes %}
-
+			<table class="table table-bordered " id="table-clientes">
+				<thead class="table-primary">
 					<tr>
-						<th scope="row">{{ cliente.id }}</th>
-						<td>{{ cliente.name }}</td>
-						<td>{{ cliente.phone }}</td>
-						<td>{{ cliente.typeDocument }}
-							-
-							{{ cliente.numberDocument }}</td>
-						<td>{{ cliente.dateCreated|date('Y-m-d') }}</td>
-						<td>
-							<a href="{{ path('app_cliente_edit_page', {id: cliente.id}) }}" type="button" class="btn btn-primary btn-sm">
-								<i class="fa-regular fa-pen-to-square"></i>
-							</a>
-
-						</td>
+						<th scope="col" class="text-secondary text-uppercase " >#</th>
+						<th scope="col" class="text-secondary text-uppercase ">Nombre</th>
+						<th scope="col" class="text-secondary text-uppercase " >Telefono</th>
+						<th scope="col" class="text-secondary text-uppercase " >Documento</th>
+						<th scope="col" class="text-secondary text-uppercase " >Fecha</th>
+						<th scope="col" class="text-secondary text-uppercase " >#</th>
 					</tr>
+				</thead>
+				<tbody>
+					{% for cliente in clientes %}
 
-				{% endfor %}
-			</tbody>
-		</table>
+						<tr>
+							<th scope="row">{{ cliente.id }}</th>
+							<td>{{ cliente.name }}</td>
+							<td>{{ cliente.phone }}</td>
+							<td>{{ cliente.typeDocument }}
+								-
+								{{ cliente.numberDocument }}</td>
+							<td>{{ cliente.dateCreated|date('Y-m-d') }}</td>
+							<td>
+								<a href="{{ path('app_cliente_edit_page', {id: cliente.id}) }}" type="button" class="btn btn-primary btn-sm">
+									<i class="fa-regular fa-pen-to-square"></i>
+								</a>
+
+							</td>
+						</tr>
+
+					{% endfor %}
+				</tbody>
+			</table>
+		</div>
+
 	</div>
 {% endblock %}
