@@ -16,7 +16,7 @@ use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
 class SecurityClienteController extends AbstractController
 {
-    #[Route(path: '/client/login', name: 'app_login_client')]
+    #[Route(path: '/client/auth/login', name: 'app_login_client')]
     public function login(AuthenticationUtils $authenticationUtils): Response
     {
         // get the login error if there is one
@@ -31,7 +31,7 @@ class SecurityClienteController extends AbstractController
         ]);
     }
 
-    #[Route(path: '/client/login_check', name: 'app_login_client_check')]
+    #[Route(path: '/client/auth/login_check', name: 'app_login_client_check')]
     public function logincheck(Security $security, AuthenticationUtils $authenticationUtils, Request $request, UserClienteRepository $userClienteRepository): Response
     {
 

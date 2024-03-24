@@ -33,7 +33,7 @@ security:
                 # where to redirect after logout
                 # target: app_any_route
         cliente:
-            pattern: ^/client
+            pattern: ^/client/auth
             form_login:
                 login_path: app_login_client
                 check_path: app_login_client_check
