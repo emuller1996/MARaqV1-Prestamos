@@ -25,7 +25,7 @@ class ClienteType extends AbstractType
                     'PA' => "PA",
                 ]
             ])
-            ->add('numberDocument', null, ['label' => 'Numero Telefonico'])
+            ->add('numberDocument', null, ['label' => 'Numero Documneto'])
             ->add('address', null, ['label' => 'Dirrecion/Barrio'])
             ->add('save', SubmitType::class);
     }

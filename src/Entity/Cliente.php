@@ -37,6 +37,9 @@ class Cliente
     #[ORM\OneToMany(targetEntity: Prestamos::class, mappedBy: 'cliente')]
     private Collection $prestamos;
 
+    #[ORM\OneToOne(mappedBy: 'cliente', cascade: ['persist', 'remove'])]
+    private ?UserCliente $userCliente = null;
+
     public function __construct()
     {
         $this->prestamos = new ArrayCollection();
@@ -145,6 +148,28 @@ class Cliente
                 $prestamo->setCliente(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getUserCliente(): ?UserCliente
+    {
+        return $this->userCliente;
+    }
+
+    public function setUserCliente(?UserCliente $userCliente): static
+    {
+        // unset the owning side of the relation if necessary
+        if ($userCliente === null && $this->userCliente !== null) {
+            $this->userCliente->setCliente(null);
+        }
+
+        // set the owning side of the relation if necessary
+        if ($userCliente !== null && $userCliente->getCliente() !== $this) {
+            $userCliente->setCliente($this);
+        }
+
+        $this->userCliente = $userCliente;
 
         return $this;
     }

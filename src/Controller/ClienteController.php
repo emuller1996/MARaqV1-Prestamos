@@ -3,7 +3,9 @@
 namespace App\Controller;
 
 use App\Entity\Cliente;
+use App\Entity\UserCliente;
 use App\Form\ClienteType;
+use App\Form\RegistrationFormType;
 use App\Repository\ClienteRepository;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityManagerInterface;
@@ -11,6 +13,7 @@ use Doctrine\ORM\Mapping\Entity;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Attribute\Route;
 
 
@@ -31,11 +34,18 @@ class ClienteController extends AbstractController
     }
 
     #[Route('/edit/{id}', name: '_edit_page')]
-    public function edit(Request $request, EntityManagerInterface $em, int $id): Response
+    public function edit(Request $request, EntityManagerInterface $em, int $id,UserPasswordHasherInterface $userPasswordHasher): Response
     {
         $cliente = $em->getRepository(Cliente::class)->find($id);        // ...
         $form = $this->createForm(ClienteType::class, $cliente);
+        $user = new UserCliente();
+        $user->setUsername($cliente->getNumberDocument());
+
+        $form2 = $this->createForm(RegistrationFormType::class, $user);
+
         $form->handleRequest($request);
+        $form2->handleRequest($request);
+
         if ($form->isSubmitted() && $form->isValid()) {
 
             $cliente = $form->getData();
@@ -44,8 +54,29 @@ class ClienteController extends AbstractController
             // ... perform some action, such as saving the task to the database        
             return $this->redirectToRoute('app_cliente_list_page');
         }
+
+
+        if ($form2->isSubmitted() && $form2->isValid()) {
+            // encode the plain password
+            $user->setCliente($cliente);
+            $user->setRoles(["ROLE_CLIENTE"]);
+            $user->setPassword(
+                    $userPasswordHasher->hashPassword(
+                    $user,
+                    $form2->get('plainPassword')->getData()
+                )
+            );
+
+            $em->persist($user);
+            $em->flush();
+            // do anything else you need here, like send an email
+            return $this->redirectToRoute('app_cliente_list_page');
+        }
+
+
         return $this->render('cliente/edit.html.twig', [
             'form' => $form,
+            'form2' => $form2,
             'cliente' => $cliente
         ]);
     }
