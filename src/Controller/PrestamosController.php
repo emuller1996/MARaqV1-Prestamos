@@ -15,6 +15,8 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 
+
+#[Route('/d')]
 class PrestamosController extends AbstractController
 {
     #[Route('/prestamos', name: 'app_prestamos_list')]

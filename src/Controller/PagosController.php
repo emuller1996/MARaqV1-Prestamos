@@ -9,7 +9,7 @@ use Symfony\Component\Routing\Attribute\Route;
 
 class PagosController extends AbstractController
 {
-    #[Route('/pagos', name: 'app_pagos')]
+    #[Route('/d/pagos', name: 'app_pagos')]
     public function index( PagosRepository $pagosRepository): Response
     {
 

@@ -17,7 +17,7 @@ use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Attribute\Route;
 
 
-#[Route('/clientes', name: 'app_cliente')]
+#[Route('/d/clientes', name: 'app_cliente')]
 class ClienteController extends AbstractController
 {
 

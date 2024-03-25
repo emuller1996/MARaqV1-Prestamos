@@ -136,4 +136,13 @@ class UserCliente implements UserInterface, PasswordAuthenticatedUserInterface
         // add $this->salt too if you don't use Bcrypt or Argon2i
         [$this->id, $this->username, $this->password] = $data;
     }
+    public function serialize()
+    {
+        return serialize($this->id);
+    }
+
+    public function unserialize($data)
+    {
+        $this->id = unserialize($data);
+    }
 }
