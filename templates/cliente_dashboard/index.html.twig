@@ -6,10 +6,10 @@
 		{% endblock %}
 	</title>
 
-	<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet"/>
 
 	<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text><text y=%221.3em%22 x=%220.2em%22 font-size=%2276%22 fill=%22%23fff%22>sf</text></svg>">
 	{% block stylesheets %}
+
 
 		 <script src="https://cdn.tailwindcss.com"></script>
 		<link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.css" rel="stylesheet"/>
@@ -28,21 +28,23 @@
 				<span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">PrestamoApp</span>
 			</a>
 			<div class="flex items-center md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
-				<button type="button" class="flex text-sm bg-gray-800 rounded-full md:me-0 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600" id="user-menu-button" aria-expanded="false" data-dropdown-toggle="user-dropdown" data-dropdown-placement="bottom">
+				<button type="button" class="flex text-sm rounded-full md:me-0 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600" id="user-menu-button" aria-expanded="false" data-dropdown-toggle="user-dropdown" data-dropdown-placement="bottom">
 					<span class="sr-only">Open user menu</span>
-					<img class="w-8 h-8 rounded-full" src="/docs/images/people/profile-picture-3.jpg" alt="user photo">
+					<img class="w-8 h-8 rounded-full text-white" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRDwmG52pVI5JZfn04j9gdtsd8pAGbqjjLswg&usqp=CAU" alt="user photo">
 				</button>
 				<!-- Dropdown menu -->
 				<div class="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600" id="user-dropdown">
 					<div class="px-4 py-3">
 						<span class="block text-sm text-gray-900 dark:text-white">{{ app.user.cliente.name }}</span>
 						<span class="block text-sm text-gray-900 dark:text-white">{{ app.user.cliente.phone }}</span>
-						<span class="block text-sm text-gray-900 dark:text-white">{{ app.user.cliente.TypeDocument }} - {{ app.user.cliente.NumberDocument }}</span>
+						<span class="block text-sm text-gray-900 dark:text-white">{{ app.user.cliente.TypeDocument }}
+							-
+							{{ app.user.cliente.NumberDocument }}</span>
 
 
 					</div>
 					<ul class="py-2" aria-labelledby="user-menu-button">
-						
+
 						<li>
 							<a href="{{ path('app_logout_client') }}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Sign out</a>
 						</li>
@@ -58,36 +60,133 @@
 			<div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-user">
 				<ul class="flex flex-col font-medium p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
 					<li>
-						<a href="#" class="block py-2 px-3 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 md:dark:text-blue-500" aria-current="page">Home</a>
+						<a href="#" class="block py-2 px-3 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 md:dark:text-blue-500" aria-current="page">Mis Prestamos</a>
 					</li>
-					<li>
-						<a href="#" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">About</a>
-					</li>
-					<li>
-						<a href="#" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Services</a>
-					</li>
-					<li>
-						<a href="#" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Pricing</a>
-					</li>
-					<li>
-						<a href="#" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Contact</a>
-					</li>
+					
 				</ul>
 			</div>
 		</div>
 	</nav>
 
-		This friendly message is coming from:
-		<ul>
-			
-			<li>Your controller at
-				<code>C:/Users/Estefano Muller/Desktop/proyectos/MARaqV1-Prestamos/src/Controller/ClienteDashboardController.php</code>
-			</li>
-			<li>Your template at
-				<code>C:/Users/Estefano Muller/Desktop/proyectos/MARaqV1-Prestamos/templates/cliente_dashboard/index.html.twig</code>
-			</li>
-		</ul>
+	<div class="container mx-auto mt-8 ">
+		<div class="grid md:grid-cols-2 grid-cols-1 gap-4">
+
+			{% for prestamo in app.user.cliente.prestamos %}
+
+				<div class=" p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+					<div class="flex justify-between">
+						<span>
+							<b>Fecha :
+							</b>
+							{{prestamo.fechaPrestamo|date('Y-m-d')}}</span>
+						<div>
+							<span class="bg-purple-100 text-purple-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-purple-900 dark:text-purple-300">{{prestamo.estado}}</span>
+						</div>
+						<h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{{prestamo.ValorTotal|number_format(2, ',', '.')}}</h5>
+					</div>
+					<div class="flex justify-between">
+						<div class="flex  flex-col">
+							<span class="text-purple-800 text-xs font-medium">
+								Deuda Actual</span>
+							<span>
+								${{prestamo.deudaActual|number_format(2, ',', '.')}}</span>
+						</div>
+
+						<div class="flex  flex-col">
+							<span class="text-purple-800 text-xs font-medium">
+								% Interes</span>
+							<span>
+								{{prestamo.porcentajeInteres|number_format(0)}}%</span>
+						</div>
+
+						<div class="flex  flex-col">
+							<span class="text-purple-800 text-xs font-medium">
+								Valor Interes</span>
+							<span>
+								${{prestamo.valorInteres|number_format(2, ',', '.')}}</span>
+						</div>
+
+
+					</div>
+
+
+					<a href="#" class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+						Read more
+						<svg class="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewbox="0 0 14 10">
+							<path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
+						</svg>
+					</a>
+
+
+					<div class="relative overflow-x-auto">
+						<table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+							<thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+								<tr>
+									<th scope="col" class="px-6 py-3">
+										N* Pay
+									</th>
+									<th scope="col" class="px-6 py-3">
+										Valor Total
+									</th>
+									<th scope="col" class="px-6 py-3">
+										Abonno Capital
+									</th>
+
+								</tr>
+							</thead>
+							<tbody>
+								{% if prestamo.pagos is empty%}
+
+									<tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+										<td scope="row" colspan="3" class="text-center px-6 py-4 font-medium text-gray-400 whitespace-nowrap dark:text-white">
+											NO TIENE PAGOS REGISTRADOS
+										</td>
+									</tr>
+
+								{% endif %}
+
+								{% for pago in prestamo.pagos %}
+
+
+									<tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+										<th scope="row" class="px-6 py-4 font-medium text-gray-600 whitespace-nowrap dark:text-white">
+											{{pago.id}}
+										</th>
+										<td class="px-6 py-4 text-gray-700">
+											${{pago.pagoTotal|number_format(0, ',', '.')}}
+										</td>
+										<td class="px-6 py-4 text-gray-700">
+											${{pago.abonoCapital|number_format(0, ',', '.')}}
+										</td>
+
+
+									</tr>
+								{% endfor %}
+
+
+							</tbody>
+						</table>
+					</div>
+
+
+				</div>
+
+			{% endfor %}
+
+
+		</div>
+
 	</div>
+	<div class="block bottom-0 container mx-auto mt-8  pt-8"></div>
+
+
+	<footer class="fixed bottom-0 left-0 z-20 w-full p-4 bg-white border-t border-gray-200 shadow md:flex md:items-center md:justify-between md:p-6 dark:bg-gray-800 dark:border-gray-600">
+		<span class="text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2023
+			<a href="https://flowbite.com/" class="hover:underline">Flowbite™</a>. All Rights Reserved.
+		</span>
+		<ul class="flex flex-wrap items-center mt-3 text-sm font-medium text-gray-500 dark:text-gray-400 sm:mt-0"></ul>
+	</footer>
+
 {% endblock %}
 
 {% block javascripts %}
